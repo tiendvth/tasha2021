@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/admin/images/favicon (2).ico" type="image/ico" />
+    <title>TASHA Store | Register Complaint</title>
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="/fontawesome/css/font-awesome.min.css">
+
+
+    <!--FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Cairo:300,400,700|Josefin+Sans:300i,400,400i,600,700"
+          rel="stylesheet">
+
+    <!--Owl Carousel-->
+    <link rel="stylesheet" href="/owl-carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/owl-carousel/assets/owl.theme.green.min.css">
+
+    <!--BOOTSTRAP CSS-->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    <!--OUR CSS-->
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/register_complaint.css">
+
+    <!--FOOTER CSS-->
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/header.css">
+
+</head>
+<body>
+<!--START OF HEADER SECTION-->
+<%-include('partial/header')%>
+<!--END OF HEADER SECTION-->
+<!--START OF HOME SECTION-->
+<section>
+    <div class="row1">
+        <div class="col-md-7">
+            <h2 class="text-center">Register Complaint</h2>
+            <p class="text-center">We are here to assist you!
+                Please complete the form below for your complaints.</p>
+            <div>
+                <form action="/post/message/complaint" method="post" class="text-center" id="validate-form">
+                    <div class="row">
+                        <div class="col-md-6"><input type="text" name="name" placeholder="Complainant's Name..."></div>
+                        <div class="col-md-6"><input type="text" name="company" placeholder="Name of the company...">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8"> <input type="email" name="email" placeholder="Your Email..."></div>
+                        <div class="col-md-4"> <input type="date" name="date"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"><input type="text" name="regarding" placeholder="The complaint is regarding..."></div>
+                        <div class="col-md-6"><input type="text" name="nature" placeholder="The nature of complaint..."></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <textarea placeholder="The specific details of the complaint..." cols="30" rows="10" name="content"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"> <button class="text-center btn btn-submit">Send</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!--END OF HOME SECTION-->
+
+<!--START OF FOOTER SECTION-->
+<%-include('partial/footer')%>
+<!--END OF FOOTER SECTION-->
+<!--.jquery js-->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.validate.min.js"></script>
+
+<!--.bootstrap-->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<!--owl carousel-->
+<script src="/owl-carousel/owl.carousel.min.js"></script>
+
+<!--Our JS-->
+<script src="/js/validate.js"></script>
+</body>
+</html>

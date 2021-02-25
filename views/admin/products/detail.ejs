@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partial/head') %>
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <%- include('../partial/left-menu') %>
+
+
+        <%- include('../partial/navbar') %>
+
+        <div class="right_col" role="main">
+
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>Product Detail</h3>
+                    </div>
+
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5  form-group pull-right top_search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 ">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+
+                                <div class="col-md-7 col-sm-7 ">
+                                    <% { const arrayImg = data.detail.thumbnails.split(',') %>
+                                    <div class="product-image">
+                                        <img src="<%= arrayImg[0] %>" alt="..." id="product-img" width="100%"
+                                             height="603px">
+                                    </div>
+                                    <div class="product_gallery">
+                                        <% if(arrayImg[0] == null){ %>
+                                        <% }else{ %>
+                                            <a>
+                                                <img src="<%= arrayImg[0] %>" alt="..." class="small-img" width="100%"
+                                                     height="100px" style="cursor: pointer"/>
+                                            </a>
+                                        <% } %>
+                                        <% if(arrayImg[1] == null){ %>
+                                        <% }else{ %>
+                                            <a>
+                                                <img src="<%= arrayImg[1] %>" alt="..." class="small-img" width="100%"
+                                                     height="100px" style="cursor: pointer"/>
+                                            </a>
+                                        <% } %>
+                                        <% if(arrayImg[2] == null){ %>
+                                        <% }else{ %>
+                                            <a>
+                                                <img src="<%= arrayImg[2] %>" alt="..." class="small-img" width="100%"
+                                                     height="100px" style="cursor: pointer"/>
+                                            </a>
+                                        <% } %>
+                                        <% if(arrayImg[3] == null){ %>
+                                        <% }else{ %>
+                                            <a>
+                                                <img src="<%= arrayImg[3] %>" alt="..." class="small-img" width="100%"
+                                                     height="100px" style="cursor: pointer"/>
+                                            </a>
+                                        <% } %>
+                                    </div>
+                                    <% } %>
+                                </div>
+
+                                <div class="col-md-5 col-sm-5 " style="border:0px solid #e5e5e5;">
+
+                                    <h3 class="prod_title"><%= data.detail.title %></h3>
+
+                                    <p><%= data.detail.description %></p>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+
+                                    <div class="">
+                                        <div class="product_price">
+                                            <h1 class="price"><%= data.detail.price %>$</h1>
+                                            <br>
+                                        </div>
+                                    </div>
+                                    <div class="product_social">
+                                        <ul class="list-inline display-layout">
+                                            <li><a href="#"><i class="fa fa-facebook-square"></i></a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-twitter-square"></i></a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-envelope-square"></i></a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-rss-square"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-md-12">
+
+                                    <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home"
+                                               role="tab" aria-controls="home" aria-selected="true">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile"
+                                               role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact"
+                                               role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                             aria-labelledby="home-tab">
+                                            Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt
+                                            tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor,
+                                            williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh
+                                            dreamcatcher
+                                            synth. Cosby sweater eu banh mi, qui irure terr.
+                                        </div>
+                                        <div class="tab-pane fade" id="profile" role="tabpanel"
+                                             aria-labelledby="profile-tab">
+                                            Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin
+                                            coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next
+                                            level wes anderson artisan four loko farm-to-table craft beer twee. Qui
+                                            photo
+                                            booth letterpress, commodo enim craft beer mlkshk aliquip
+                                        </div>
+                                        <div class="tab-pane fade" id="contact" role="tabpanel"
+                                             aria-labelledby="contact-tab">
+                                            xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin
+                                            coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next
+                                            level wes anderson artisan four loko farm-to-table craft beer twee. Qui
+                                            photo
+                                            booth letterpress, commodo enim craft beer mlkshk
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer content -->
+        <%- include('../partial/footer') %>
+        <!-- /footer content -->
+    </div>
+</div>
+
+<%- include('../partial/script') %>
+<script>
+    var ProductImg = document.getElementById("product-img");
+    var SmallImg = document.getElementsByClassName("small-img");
+    SmallImg[0].onclick = function () {
+        ProductImg.src = SmallImg[0].src;
+    }
+    SmallImg[1].onclick = function () {
+        ProductImg.src = SmallImg[1].src;
+    }
+    SmallImg[2].onclick = function () {
+        ProductImg.src = SmallImg[2].src;
+    }
+    SmallImg[3].onclick = function () {
+        ProductImg.src = SmallImg[3].src;
+    }
+    SmallImg[4].onclick = function () {
+        ProductImg.src = SmallImg[4].src;
+    }
+
+
+</script>
+</body>
+</html>

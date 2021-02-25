@@ -1,0 +1,101 @@
+<div class="header">
+    <div class="row_header">
+        <div class="container1 col-md-4 ">
+            <a class="brand" href="/"><span class="title-kitchen">TASHA</span><span
+                        class="fa fa-paw fa-2x logo"
+                        style="border: 1px solid #6F5CF3;padding: 5px 6px; border-radius: 50%"></span>
+                <span class="title-design">The home store </span></a>
+        </div>
+        <div class="col-md-4 center-nav">
+            <div class="input-group">
+                <input type="search" class="form-control rounded" placeholder="Search..." aria-label="Search"
+                       aria-describedby="search-addon"/>
+                <button type="button" class="btn btn-outline-primary"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div>
+                <ul class="nav navbar-nav navbar-left">
+                    <% if(data.user === undefined){ %>
+                        <li><a class="cur" data-toggle="modal" data-target="#exampleModal"> Log In <i
+                                        class="fa fa-user"></i></a></li>
+                    <% } else{ %>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link  dropdown-toggle cur"
+                               data-toggle="dropdown"> <%= data.user.lastname + ' ' + data.user.firstname %>
+                                <% if(data.user.thumbnail == null || data.user.thumbnail == undefined){ %>
+                                    <img src="/admin/images/user.png" alt="..." style="border-radius: 40px;"
+                                         height="25px" width="25px">
+                                <% } else{ %>
+                                <img src="<%= data.user.thumbnail %>" alt="..." style="border-radius: 40px;"
+                                     height="25px" width="25px">
+                                <% } %>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/users/profile/<%=data.user._id%>">Profile <i class="fa fa-cog"></i></a></li>
+                                <li><a class="dropdown-item" href="/users/logout"
+                                       onclick="return confirm('Bạn có muốn đăng xuất')">Log Out <i
+                                                class="fa fa-sign-out"></i></a></li>
+                            </ul>
+                        </li>
+                    <% } %>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right" style="padding-right: 50px">
+                    <li>
+                        <button class="btn navbar-btn btn-purple">Cart <i class="fa fa-cart-plus"></i></button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <!----------------------------------modal ----->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="out">&times;</span>
+                </button>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="form-container">
+                            <div class="form-btn">
+                                <span onclick="register()">Register</span>
+                                <span onclick="login()">Login</span>
+                                <hr id="Indicator">
+                            </div>
+                            <form action="/users/create" method="post" id="RegForm">
+                                <div class="row">
+                                    <div class="col-md-6"><input type="text" placeholder="first name..."
+                                                                 name="firstname">
+                                    </div>
+                                    <div class="col-md-6"><input type="text" placeholder="last name..." name="lastname">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6"><input type="email" placeholder="Email" name="email"></div>
+                                    <div class="col-md-6"><input type="date" name="date"></div>
+                                </div>
+                                <input type="text" name="address" placeholder="Address...">
+                                <input type="text" name="user" placeholder="Username...">
+
+                                <input type="password" placeholder="Password" name="password" id="password">
+                                <input type="password" placeholder="Re-password" name="re-password" id="re-password">
+                                <button type="submit" class="btn2">Register</button>
+                            </form>
+                            <form action="/users/login" id="LoginForm" method="post">
+                                <input type="text" placeholder="Username" name="user">
+                                <input type="password" placeholder="Password" name="password">
+                                <button type="submit" class="btn2">Login</button>
+                                <a href="">Forgot password</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!----------------------------------end---modal----->

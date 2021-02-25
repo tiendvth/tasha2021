@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partial/head') %>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <%- include('../partial/left-menu') %>
+        <!-- top navigation -->
+        <%- include('../partial/navbar') %>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>List Products</h3>
+                    </div>
+
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5   form-group pull-right top_search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                      <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="row" style="display: block;">
+                    <div class="col-md-12 col-sm-12  ">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <div class="col-md-4 text-left">
+                                    <a href="/admin/products/create" class="btn btn-primary ">Create new Products</a>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Search..."
+                                                   name="keyword" value="<%= keyword %>">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 text-right">
+                                    <form action="/admin/products/list" method="get" id="filterForm">
+                                        <div class="form-group">
+                                            <select name="categoryId" id="cateDropdown" class="form-control"
+                                                    style="width: 100%;">
+                                                <option value="0">All Products</option>
+                                                <% for (let i = 0; i < listCategory.length; i++) {
+                                                %>
+                                                    <option value="<%= listCategory[i]._id %>" <%= listCategory[i]._id == SelectcategoryId ? 'selected' : '' %>><%= listCategory[i].title %></option>
+                                                <% } %>
+                                            </select>
+                                            <input type="hidden" name="page" value="<%= page %>">
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <% if(listProduct.length > 0){ %>
+
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Thumbnail</th>
+                                            <th>Price</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <%
+                                        for (var i = 0; i < listProduct.length; i++) {
+                                            const arrayImage = listProduct[i].thumbnails.split(',');
+                                        %>
+                                            <tr>
+                                                <th scope="row"><%= listProduct[i].title %></th>
+                                                <td><img src="<%= arrayImage[0] %>" alt="" width="100px" height="100px"></td>
+                                                <td><%= listProduct[i].price %>$</td>
+                                                <td><a href="/admin/products/detail/<%= listProduct[i]._id %>">
+                                                        <button class="btn btn-primary"><i
+                                                                    class="fa fa-info-circle"></i></button>
+                                                    </a>&nbsp;&nbsp;
+                                                    <a href="/admin/products/edit/<%= listProduct[i]._id %>">
+                                                        <button class="btn btn-success"><i class="fa fa-edit"></i>
+                                                        </button>
+                                                    </a>&nbsp;&nbsp;
+                                                    <a href="/admin/products/delete/<%= listProduct[i]._id %>"
+                                                       onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này')">
+                                                        <button class="btn btn-danger"><i class="fa fa-trash"></i>
+                                                        </button>
+                                                    </a></td>
+                                            </tr>
+                                        <% } %>
+                                    <% } else { %>
+
+                                <% } %>
+                            </tbody>
+                            </table>
+                            </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="dataTables_paginate paging_simple_numbers"
+                                             id="datatable-keytable_paginate">
+                                            <ul class="pagination">
+                                                <li class="paginate_button previous disabled"
+                                                    id="prev">
+                                                    <a href="#" aria-controls="datatable-keytable" data-dt-idx="0"
+                                                       tabindex="0">Previous</a>
+                                                </li>
+                                                <li class="paginate_button active"><a href="#"
+                                                                                      aria-controls="datatable-keytable"
+                                                                                      data-dt-idx="1"
+                                                                                      tabindex="0"><%= page %></a></li>
+                                                <li class="paginate_button next" id="next"><a href="#"
+                                                                                              aria-controls="datatable-keytable"
+                                                                                              data-dt-idx="7"
+                                                                                              tabindex="0">Next</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <%- include('../partial/footer') %>
+        <!-- /footer content -->
+    </div>
+</div>
+<%- include('../partial/script') %>
+<script>
+    const formSearch = document.forms['filterForm']
+    const selectCate = document.getElementById('cateDropdown');
+    const keywordInput = document.querySelector('input[name="keyword"]');
+    const pageInput = document.querySelector('input[name="page"]');
+
+    if (selectCate) {
+        selectCate.onchange = function () {
+            // location.href = `${location.href.split('?')[0]}?categoryId=${this.value}`
+            formSearch.submit();
+        }
+    }
+    keywordInput.onkeypress = function (event) {
+        // alert(keywordInput.value)
+        if (event.key == 'Enter') {
+            formSearch.submit();
+        }
+    }
+
+    $('#prev').click(() => {
+        pageInput.value = parseInt(pageInput.value) - 1;
+        formSearch.submit();
+    })
+    $('#next').click(() => {
+        pageInput.value = parseInt(pageInput.value) + 1;
+        formSearch.submit();
+    })
+</script>
+</body>
+</html>

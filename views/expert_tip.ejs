@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/admin/images/favicon (2).ico" type="image/ico" />
+    <title>TASHA Store | Expert Tip</title>
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="/fontawesome/css/font-awesome.min.css">
+
+
+    <!--FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Cairo:300,400,700|Josefin+Sans:300i,400,400i,600,700"
+          rel="stylesheet">
+
+    <!--Owl Carousel-->
+    <link rel="stylesheet" href="/owl-carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/owl-carousel/assets/owl.theme.green.min.css">
+
+    <!--BOOTSTRAP CSS-->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    <!--OUR CSS-->
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/Expert_tips.css">
+
+    <!--FOOTER CSS-->
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/header.css">
+
+</head>
+<body>
+<!--START OF HEADER SECTION-->
+<%- include('partial/header') %>
+<!--END OF HEADER SECTION-->
+<!--START OF HOME SECTION-->
+<section>
+    <div class="row1">
+        <div class="col-md-7">
+            <h2 class="text-center"><i class="fa fa-book"></i> Expert Tips</h2>
+            <div class="row" style="padding-top: 20px">
+                <% for (var i = 0; i < data.listArticle.length; i++) {
+                    const arrayImg = data.listArticle[i].thumbnails.split(',');
+                %>
+                <div class="row" style="padding-top: 20px">
+                    <div class="col-md-4">
+                        <img style="height: 200px;width: 100%" src="<%= arrayImg[0] %>" style="width:100%">
+                    </div>
+                    <div class="col-md-8">
+                        <a class="title1" href="/expert-tip/<%= data.listArticle[i]._id %>"><%= i + 1%>. <%= data.listArticle[i].title %></a>
+                        <p class="title">By <%= data.listArticle[i].author %></p>
+                        <p><%= data.listArticle[i].description %></p>
+                    </div>
+                </div>
+
+                <% } %>
+                <!--                <div class="col-md-4">-->
+                <!--                    <div class="card">-->
+                <!--                        <img src="Images/expertip_02.jpg" style="width:100%">-->
+                <!--                        <h1>9 Places to Put the Microwave in Your Kitchen</h1>-->
+                <!--                        <p class="title">By Yanic Simard</p>-->
+                <!--                        <p>See the pros and cons of locating your microwave above, below and beyond the counter</p>-->
+
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--                <div class="col-md-4">-->
+                <!--                    <div class="card">-->
+                <!--                        <img src="Images/expertip_01.jpg" style="width:100%">-->
+                <!--                        <h1>10 Holiday Gifts Perfect for the Home Cooks</h1>-->
+                <!--                        <p class="title">By Laura Gaskill</p>-->
+                <!--                        <p>Check out these kitchen gift ideas, from budget picks to <br> splurges</p>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+            </div>
+
+
+        </div>
+    </div>
+
+</section>
+<!--END OF HOME SECTION-->
+
+<!--START OF FOOTER SECTION-->
+<%- include('partial/footer') %>
+<!--END OF FOOTER SECTION-->
+<!--.jquery js-->
+<script src="/js/jquery.min.js"></script>
+
+<!--.bootstrap-->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<!--owl carousel-->
+<script src="/owl-carousel/owl.carousel.min.js"></script>
+
+<!--Our JS-->
+<script src="/js/home.js"></script>
+</body>
+</html>

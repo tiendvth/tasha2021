@@ -1,0 +1,30 @@
+/*************************************************GENERAL CSS******************************************/
+body{
+    font-family: 'Josefin Sans';
+}
+.op{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0,0,0,0.3);
+}
+.title-purple{
+    color: #6F5CF3;
+}
+.title-black{
+    text-transform: uppercase;
+    color: #111;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.btn-purple{
+    background-color: #000;
+    border: 1px solid #6F5CF3;
+    color: #fff;
+}
+.btn-purple:hover{
+    background-color: #6F5CF3;
+    color: #000;
+}

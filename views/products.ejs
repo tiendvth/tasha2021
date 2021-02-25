@@ -1,0 +1,124 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <link rel="icon" href="/admin/images/favicon (2).ico" type="image/ico"/>
+    <title>TASHA Store | Products</title>
+    <link href="https://fonts.googleapis.com/css?family=Cairo:200,300,400,600,700,900|Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i"
+          rel="stylesheet">
+    <link rel="stylesheet" href="/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/owl-carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/owl-carousel/assets/owl.theme.default.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/demo.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/header.css">
+</head>
+<body>
+<!--start of img heading section-->
+<%- include('partial/header') %>
+<!--end of imgheading section-->
+<!--start of imgages-->
+<section>
+    <div class="row row-2 text-center ">
+        <div class="col-md-7">
+            <h2 data-value="0">All Products</h2>
+        </div>
+        <div class="col-5 col-md-5">
+            <form action="/products" method="get" id="filterForm">
+                <select name="categoryId" id="cateDropdown">
+                    <option value="0">All Products</option>
+                    <% for (let i = 0; i < data.listCategory.length; i++) {
+                    %>
+                        <option value="<%= data.listCategory[i]._id %>" <%= data.listCategory[i]._id == data.SelectcategoryId ? 'selected' : '' %>><%= data.listCategory[i].title %></option>
+                    <% } %>
+                </select>
+                <input type="hidden" name="page" value="<%= data.page %>">
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="container">
+    <% if(data.listProduct.length > 0){ %>
+        <div class="row">
+            <%
+            for (var i = 0; i < data.listProduct.length; i++) {
+                const arrayImage = data.listProduct[i].thumbnails.split(',');
+            %>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="<%= arrayImage[0] %>" class="img-form">
+                    <h4 style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;padding-top: 20px"><%= data.listProduct[i].title %></h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p><%= data.listProduct[i].price %>$</p>
+                    <a class="btn1" href="/products/details/<%= data.listProduct[i]._id %>">Buy</a>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    <% } else { %>
+        <div>
+            <h1 class="text-center" style="color: #c3c3c3">Have no Products !</h1>
+        </div>
+    <% } %>
+
+    <div class="row">
+        <div class="col-md-12 ">
+            <ul class="pagination container">
+                <li id="prev"><a href="#">&laquo;</a></li>
+                <li><a><%= data.page %></a></li>
+                <li id="next"><a href="#">&raquo;</a></li>
+            </ul>
+        </div>
+
+    </div>
+    </div>
+    </div>
+</section>
+<!--FOOTER SECTION-->
+<%- include('partial/footer') %>
+<!--END OF FOOTER SECTION-->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.validate.min.js"></script>
+<script src="/owl-carousel/owl.carousel.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/design.js"></script>
+<script src="/js/validate.js"></script>
+<script>
+    const formSearch = document.forms['filterForm']
+    const selectCate = document.getElementById('cateDropdown');
+    // const keywordInput = document.querySelector('input[name="keyword"]');
+    const pageInput = document.querySelector('input[name="page"]');
+    if (selectCate) {
+        selectCate.onchange = function () {
+            // location.href = `${location.href.split('?')[0]}?categoryId=${this.value}`
+            formSearch.submit();
+        }
+    }
+    // keywordInput.onkeypress = function (event) {
+    //     // alert(keywordInput.value)
+    //     if (event.key == 'Enter') {
+    //         formSearch.submit();
+    //     }
+    // }
+    $('#prev').click(() => {
+        pageInput.value = parseInt(pageInput.value) - 1;
+        formSearch.submit();
+    })
+    $('#next').click(() => {
+        pageInput.value = parseInt(pageInput.value) + 1;
+        formSearch.submit();
+    })
+</script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!-- jQuery -->
+<script src="/admin/vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/admin/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- jquery-validation -->
+<script src="/admin/vendors/jquery-validation/jquery.validate.min.js"></script>
+<script src="/admin/vendors/jquery-validation/additional-methods.min.js"></script>
+<!-- FastClick -->
+<script src="/admin/vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="/admin/vendors/nprogress/nprogress.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="/admin/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+<!-- iCheck -->
+<script src="/admin/vendors/iCheck/icheck.min.js"></script>
+
+<!-- bootstrap-daterangepicker -->
+<script src="/admin/vendors/moment/min/moment.min.js"></script>
+<script src="/admin/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap-wysiwyg -->
+<script src="/admin/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+<script src="/admin/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+<script src="/admin/vendors/google-code-prettify/src/prettify.js"></script>
+<!-- jQuery Tags Input -->
+<script src="/admin/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+<!-- Switchery -->
+<script src="/admin/vendors/switchery/dist/switchery.min.js"></script>
+<!-- Select2 -->
+<script src="/admin/vendors/select2/dist/js/select2.full.min.js"></script>
+<!-- Parsley -->
+<script src="/admin/vendors/parsleyjs/dist/parsley.min.js"></script>
+<!-- Autosize -->
+<script src="/admin/vendors/autosize/dist/autosize.min.js"></script>
+<!-- jQuery autocomplete -->
+<script src="/admin/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+<!-- starrr -->
+<script src="/admin/vendors/starrr/dist/starrr.js"></script>
+<!-- Custom Theme Scripts -->
+<script src="/admin/build/js/custom.min.js"></script>
+<script>
+    $(function () {
+        // $.validator.setDefaults({
+        //     submitHandler: function () {
+        //         alert( "Form successful submitted!" );
+        //     }
+        // });
+        $('#quickForm').validate({
+            rules: {
+                "firstname": {
+                    required: true,
+                    minlength: 5
+                },
+                "lastname": {
+                    required: true,
+                    minlength: 5
+                },
+                "date": {
+                    required: true
+                },
+                "email": {
+                    required: true,
+                    email: true
+                },
+                "address": {
+                    required: true,
+                },
+                "user": {
+                    required: true,
+                    maxlength: 15
+                },
+                "password": {
+                    required: true,
+                    minlength: 5
+                },
+                "re_password":{
+                    required: true,
+                    equalTo: "#password"
+                },
+                "title": {
+                    required: true,
+                    minlength: 5
+                },
+                "description": {
+                    required: true,
+                    minlength: 15
+                },
+                "price": {
+                    required: true,
+                },
+                "thumbnail": {
+                    required: true,
+                },
+
+            },
+            messages: {
+                "firstname": {
+                    required: "Please enter your firstname",
+                    minlength: "Your firstname must be at least 5 characters long"
+                },
+                "lastname": {
+                    required: "Please enter your lastname",
+                    minlength: "Your lastname must be at least 5 characters long"
+                },
+                "date": {
+                    required: "Please enter your birthday",
+                },
+                "address": {
+                    required: "Please enter your address",
+                },
+                "user": {
+                    required: "Please enter username",
+                    maxlength: "Your username maximum 15 characters"
+                },
+                "email": {
+                    required: "Please enter a email address",
+                    email: "Please enter a vaild email address"
+                },
+                "password": {
+                    required: "Please provide a password",
+                    minlength: "Your password must be at least 5 characters long"
+                },
+                "re_password": {
+                    equalTo: "password don't match",
+                },
+            },
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).removeClass('is-invalid');
+            }
+        });
+    });
+</script>

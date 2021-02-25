@@ -1,0 +1,39 @@
+.row1 {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+div .col-lg-5{
+    padding-left: 100px;
+}
+div .col-lg-7{
+    padding-left: 100px;
+}
+.btn-submit{
+    width: 25%;
+    background-color: #6F5CF3;
+    color: #fff;
+}
+.btn-submit:hover{
+    border: 1px solid #6F5CF3;
+    background-color: #fff;
+    color: #000;
+}
+label.error{
+    color: red;
+    padding: 10px;
+}
+.msg-success{
+    color: green;
+    padding: 10px;
+}
+textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}

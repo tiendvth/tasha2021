@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<%-include('../partial/head')%>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <%-include('../partial/left-menu')%>
+        <!-- top navigation -->
+        <%-include('../partial/navbar')%>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main" style="min-height: 912px;">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>List Complaints</h3>
+                    </div>
+
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5  form-group pull-right top_search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="x_panel">
+                        <div class="x_content">
+                            <div class="col-md-12 col-sm-12  text-center">
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <% for(var i = 0; i < data.listComplaint.length; i++) {
+                            %>
+                            <div class="col-md-4 col-sm-4  profile_details">
+                                <div class="well profile_view">
+                                    <div class="col-sm-12">
+                                        <h4 class="brief"><i>Complaint Profile</i></h4>
+                                        <div class="left col-md-7 col-sm-7">
+                                            <h2><%=data.listComplaint[i].name%></h2>
+                                            <p><strong><i class="fa fa-envelope-o"></i> Mail</strong> <%=data.listComplaint[i].email%></p>
+                                            <p><strong><i class="fa fa-building-o"></i> Company </strong> <%=data.listComplaint[i].company%> </p>
+                                            <p><strong><i class="fa fa-flag"></i> Nature Of Complaint </strong> <%=data.listComplaint[i].nature%> </p>
+                                        </div>
+                                        <div class="right col-md-5 col-sm-5 text-center">
+                                            <img src="/admin/images/user.png" alt="" class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                    <div class=" profile-bottom text-center">
+                                        <div class=" col-sm-6 emphasis">
+                                            <p class="ratings">
+                                                <a>4.0</a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star-o"></span></a>
+                                            </p>
+                                        </div>
+                                        <div class=" col-sm-6 emphasis">
+                                            <a href="/admin/message/complaint/detail/<%= data.listComplaint[i]._id%>"><button class="btn btn-primary"><i class="fa fa-info-circle"></i></button></a>
+                                            <a href="/admin/message/complaint/delete/<%= data.listComplaint[i]._id %>"
+                                               onclick="return confirm('Bạn có chắc muốn xóa liên hệ này')">
+                                                <button class="btn btn-danger"><i class="fa fa-trash"></i>
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <%}%>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <%-include('../partial/footer')%>
+        <!-- /footer content -->
+    </div>
+</div>
+
+<%-include('../partial/script')%>
+</body>
+</html>

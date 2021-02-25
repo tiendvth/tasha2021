@@ -1,0 +1,11 @@
+const express = require('express');
+const adminMessageController = require('../controllers/admin-message-controller');
+const router = express.Router();
+router.get('/contact',adminMessageController.Contact);
+router.get('/feedback',adminMessageController.Feedback);
+router.get('/complaint',adminMessageController.Complaint);
+router.get('/complaint/detail/:id',adminMessageController.detailComplaint);
+router.get('/contact/delete/:id',adminMessageController.deleteContact);
+router.get('/feedback/delete/:id',adminMessageController.deleteFeedback);
+router.get('/complaint/delete/:id',adminMessageController.deleteComplaint);
+module.exports = router;

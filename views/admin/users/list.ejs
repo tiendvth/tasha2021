@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partial/head') %>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <%- include('../partial/left-menu') %>
+        <!-- top navigation -->
+        <%- include('../partial/navbar') %>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>List Users</h3>
+                    </div>
+
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5   form-group pull-right top_search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                      <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="row" style="display: block;">
+                    <div class="col-md-12 col-sm-12  ">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <div class="col-md-4"><a href="/admin/users/create" class="btn btn-primary">Add New
+                                        Users</a></div>
+                                <div class="col-md-4">
+                                    <form action="/admin/users/list" method="get" id="filterForm">
+                                        <input type="hidden" name="page" value="<%= page %>">
+                                    </form>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <%
+                                    for (let i = 0; i < listUser.length; i++) {
+                                    %>
+                                        <tr>
+                                            <th scope="row"><%= listUser[i].user %></th>
+                                            <td><%= listUser[i].email %></td>
+                                            <td><a href="/admin/users/detail/<%= listUser[i]._id %>">
+                                                    <button class="btn btn-primary"><i
+                                                                class="fa fa-info-circle"></i></button>
+                                                </a>&nbsp;&nbsp;
+                                                <a href="/admin/users/edit/<%= listUser[i]._id %>">
+                                                    <button class="btn btn-success"><i class="fa fa-edit"></i>
+                                                    </button>
+                                                </a>&nbsp;&nbsp;
+                                                <a href="/admin/users/delete/<%= listUser[i]._id %>"
+                                                   onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này')">
+                                                    <button class="btn btn-danger"><i class="fa fa-trash"></i>
+                                                    </button>
+                                                </a></td>
+                                        </tr>
+                                    <% } %>
+                                    </tbody>
+                                </table>
+                                <div class="dataTables_paginate paging_simple_numbers" id="datatable-keytable_paginate">
+                                    <ul class="pagination">
+                                        <li class="paginate_button previous disabled"
+                                            id="prev">
+                                            <a href="#" aria-controls="datatable-keytable" data-dt-idx="0"
+                                               tabindex="0">Previous</a>
+                                        </li>
+                                        <li class="paginate_button active"><a href="#"
+                                                                              aria-controls="datatable-keytable"
+                                                                              data-dt-idx="1"
+                                                                              tabindex="0"><%= page %></a></li>
+                                        <li class="paginate_button next" id="next"><a href="#"
+                                                                                      aria-controls="datatable-keytable"
+                                                                                      data-dt-idx="7"
+                                                                                      tabindex="0">Next</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <%- include('../partial/footer') %>
+        <!-- /footer content -->
+    </div>
+</div>
+
+<%- include('../partial/script') %>
+<script>
+    const formSearch = document.forms['filterForm']
+    const pageInput = document.querySelector('input[name="page"]');
+    $('#prev').click(() => {
+        pageInput.value = parseInt(pageInput.value) - 1;
+        formSearch.submit();
+    })
+    $('#next').click(() => {
+        pageInput.value = parseInt(pageInput.value) + 1;
+        formSearch.submit();
+    })
+</script>
+</body>
+</html>

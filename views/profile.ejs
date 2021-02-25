@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/admin/images/favicon (2).ico" type="image/ico"/>
+    <title>TASHA Store | Profile</title>
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="/fontawesome/css/font-awesome.min.css">
+
+
+    <!--FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Cairo:300,400,700|Josefin+Sans:300i,400,400i,600,700"
+          rel="stylesheet">
+
+    <!--Owl Carousel-->
+    <link rel="stylesheet" href="/owl-carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/owl-carousel/assets/owl.theme.green.min.css">
+
+    <!--BOOTSTRAP CSS-->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    <!--OUR CSS-->
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/profile.css">
+
+    <!--FOOTER CSS-->
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/header.css">
+
+</head>
+<body>
+<!--START OF HEADER SECTION-->
+<!--END OF HEADER SECTION-->
+<!--START OF HOME SECTION-->
+<section style="background-color: #f7f7f7">
+    <div class="container" style="height: 700px; padding-top:100px;">
+        <div class="row text-center">
+            <div class="tab">
+                <button class="tablinks" onclick="openCity(event, 'Profile')" id="defaultOpen">
+                    <div class="col-sm-3"><i class="fa fa-info fa-4x text-center" style="color: #279cff"></i></div>
+                    <div class="col-sm-9"><strong>Account Profile</strong><br>
+                        <p>Management of personal information</p></div>
+                </button>
+                <button class="tablinks" onclick="openCity(event, 'Cart')">
+                    <div class="col-sm-3"><i class="fa fa-shopping-cart fa-4x text-center" style="color: #f4b844"></i>
+                    </div>
+                    <div class="col-sm-9"><strong>Cart History</strong><br>
+                        <p>Information on purchased products</p></div>
+                </button>
+                <button class="tablinks" onclick="openCity(event, 'Deal')">
+                    <div class="col-sm-3"><i class="fa fa-dollar fa-4x" style="color: #48a163"></i></div>
+                    <div class="col-sm-9"><strong>Deal History</strong><br>
+                        <p>Billing Information</p></div>
+                </button>
+            </div>
+
+            <div id="Profile" class="tabcontent">
+                <h2 class="text-left">Account Profile</h2>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-8">
+                        <% if(data.userDetail.thumbnail == null || data.userDetail.thumbnail == undefined){ %>
+                            <img src="/admin/images/user.png" alt="" style="border-radius: 50%" width="100px" height="100px">
+                        <% }else{ %>
+                            <img src="<%= data.userDetail.thumbnail %>" alt="" style="border-radius: 50%" width="100px" height="100px">
+                        <% } %>
+                        <h4><%= data.userDetail.lastname + ' '+ data.userDetail.firstname %></h4>
+                            <div class="row">
+                                <div class="col-sm-3 text-left"><strong>Mail:</strong></div>
+                                <div class="col-sm-9 text-left"><p><%= data.userDetail.email %></p></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 text-left"><strong>Username:</strong></div>
+                                <div class="col-sm-9 text-left"><p><%= data.userDetail.user %></p></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 text-left"><strong>Address:</strong></div>
+                                <div class="col-sm-9 text-left"><p><%= data.userDetail.address %></p></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 text-left"><strong>Birthday:</strong></div>
+                                <div class="col-sm-9 text-left"><p><%= data.userDetail.date %></p></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 text-left"><strong>Số điện thoại:</strong></div>
+                                <div class="col-sm-9 text-left"><p>(Chưa có thông tin)</p></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 text-left"><strong>Số CCCD:</strong></div>
+                                <div class="col-sm-9 text-left"><p>(Chưa có thông tin)</p></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 text-left"><strong>Nghề nghiệp:</strong></div>
+                                <div class="col-sm-9 text-left"><p>(Chưa có thông tin)</p></div>
+                            </div>
+
+                    </div>
+
+                </div>
+                <div class="row" style="padding-top: 10px">
+                    <a href="/users/edit/<%=data.userDetail._id%>"><button class="btn btn-primary">Edit Profile</button></a>
+
+                </div>
+
+
+
+            </div>
+
+            <div id="Cart" class="tabcontent">
+
+            </div>
+
+            <div id="Deal" class="tabcontent">
+
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--END OF HOME SECTION-->
+
+<!--START OF FOOTER SECTION-->
+<%- include('partial/footer') %>
+<!--END OF FOOTER SECTION-->
+<!--.jquery js-->
+<script src="/js/jquery.min.js"></script>
+
+<!--.bootstrap-->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<!--owl carousel-->
+<script src="/owl-carousel/owl.carousel.min.js"></script>
+<script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>
+<!--Our JS-->
+</body>
+</html>

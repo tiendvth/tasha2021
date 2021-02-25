@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<%-include('../partial/head')%>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <%-include('../partial/left-menu')%>
+        <!-- top navigation -->
+        <%-include('../partial/navbar')%>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main" style="min-height: 912px;">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>Category Detail</h3>
+                    </div>
+
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5  form-group pull-right top_search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="col-md-12 col-sm-12  ">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Settings 1</a>
+                                        <a class="dropdown-item" href="#">Settings 2</a>
+                                    </div>
+                                </li>
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+
+                            <div class="bs-example" data-example-id="simple-jumbotron">
+                                <div class="jumbotron">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h2 class="text-center" style="font-size: 30px"><strong><%=data.articleDetail.title%></strong></h2>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="border-top: 1px solid #000;border-bottom: 1px solid #000">
+                                        <div class="col-md-6" style="padding-top: 20px">
+                                            <p><%=data.articleDetail.content%></p>
+                                        </div>
+                                        <div class="col-md-6" style="padding-top: 20px">
+                                            <%{const arrayImg = data.articleDetail.thumbnails.split(',')%>
+                                            <img src="<%=arrayImg[0]%>" alt="" width="500px" height="300px" style="padding: 15px 20px">
+                                            <img src="<%=arrayImg[1]%>" alt="" width="500px" height="300px" style="padding: 15px 20px">
+                                            <img src="<%=arrayImg[2]%>" alt="" width="500px" height="300px" style="padding: 15px 20px">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6"></div>
+                                        <div class="col-md-6">
+                                            <div class="text-center" style="padding-top: 20px"><%if(arrayImg[3] == null){%>
+                                                    <img src="/admin/images/user.png" alt="" width="75" height="75" style="border-radius: 50%;" >
+                                                <%}else{%>
+                                                <img src="<%=arrayImg[3]%>" alt="" width="75" height="75" style="border-radius: 50%">
+                                                <%}%></div>
+                                            <div><p><%= data.articleDetail.description%></p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <%}%>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <%-include('../partial/footer')%>
+        <!-- /footer content -->
+    </div>
+</div>
+
+<%-include('../partial/script')%>
+</body>
+</html>

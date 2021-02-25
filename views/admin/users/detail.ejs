@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partial/head') %>
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <%- include('../partial/left-menu') %>
+
+
+        <%- include('../partial/navbar') %>
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>User Detail</h3>
+                    </div>
+
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5  form-group pull-right top_search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="x_content">
+                        <div class="clearfix"></div>
+
+                        <div class="col-md-4 col-sm-4  profile_details">
+                            <div class="well profile_view">
+                                <div class="col-sm-12">
+                                    <h4 class="brief"><i>Profile</i></h4>
+                                    <div class="left col-md-7 col-sm-7">
+                                        <h2><%= data.userDetail.lastname + ' ' + data.userDetail.firstname %></h2>
+                                        <ul class="list-unstyled">
+                                            <li><i class="fa fa-building"></i><strong> Address: </strong>
+                                                <p><%= data.userDetail.address %></p></li>
+                                            <li><i class="fa fa-envelope"></i><strong> Mail: </strong>
+                                                <p><%= data.userDetail.email %></p></li>
+                                            <li><i class="fa fa-birthday-cake"></i><strong> Birthday: </strong>
+                                                <p><%= data.userDetail.date %></p></li>
+                                            <li><i class="fa fa-user"></i><strong> Username: </strong>
+                                                <p><%= data.userDetail.user %></p></li>
+                                        </ul>
+                                    </div>
+                                    <div class="right col-md-5 col-sm-5 text-center">
+                                        <% if(data.userDetail.thumbnail == null || data.userDetail.thumbnail == undefined){ %>
+                                            <img src="/admin/images/user.png" alt="" class="img-circle img-fluid">%>
+                                        <% }else{ %>
+                                            <img src="<%= data.userDetail.thumbnail %>" alt=""
+                                                 class="img-circle img-fluid">
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class=" profile-bottom text-center">
+                                    <div class=" col-sm-6 emphasis">
+                                    </div>
+                                    <div class=" col-sm-6 emphasis">
+                                        <a href="/admin/users/edit/<%=data.userDetail._id%>">
+                                            <button class="btn btn-primary">
+                                                <i class="fa fa-user"></i> Edit Profile
+                                            </button>
+
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer content -->
+        <%- include('../partial/footer') %>
+        <!-- /footer content -->
+    </div>
+</div>
+
+<%- include('../partial/script') %>
+</body>
+</html>

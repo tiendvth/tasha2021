@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/admin/images/favicon (2).ico" type="image/ico" />
+    <title>TASHA Store</title>
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="/fontawesome/css/font-awesome.min.css">
+
+
+    <!--FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Cairo:300,400,700|Josefin+Sans:300i,400,400i,600,700"
+          rel="stylesheet">
+
+    <!--Owl Carousel-->
+    <link rel="stylesheet" href="/owl-carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/owl-carousel/assets/owl.theme.green.min.css">
+
+    <!--BOOTSTRAP CSS-->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    <!--OUR CSS-->
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/index.css">
+
+    <!--FOOTER CSS-->
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/header.css">
+
+</head>
+<body>
+<!--START OF HEADER SECTION-->
+<header>
+    <%-include('partial/header')%>
+
+        <nav class="row navbar navbar-default" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/expert-tip">Article</a></li>
+                    <li><a href="/feedback">FeedBack</a></li>
+
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+    </div>
+
+</header>
+<!--END OF HEADER SECTION-->
+<!--START OF HOME SECTION-->
+<section>
+    <div class="animated fadeIn">
+        <div class="owl owl-carousel owl-video-tn">
+            <div class="img-carousel">
+                <img src="Images/home_page_01.jpg" alt="Room Image" class="img-responsive">
+                <div class="op"></div>
+            </div>
+            <!--.img-carousel-->
+            <div class="img-carousel">
+                <img src="Images/home_page_02.jpg" alt="Room Image" class="img-responsive">
+                <div class="op"></div>
+            </div>
+            <!--.img-carousel-->
+            <div class="img-carousel">
+                <img src="Images/home_page_03.jpg" alt="Room Image" class="img-responsive">
+                <div class="op"></div>
+            </div>
+            <!--.img-carousel-->
+            <div class="img-carousel">
+                <img src="Images/home_page_04.jpg" alt="Room Image" class="img-responsive">
+                <div class="op"></div>
+            </div>
+            <!--.img-carousel-->
+            <div class="img-carousel">
+                <img src="Images/home_page_05.jpg" alt="Room Image" class="img-responsive">
+                <div class="op"></div>
+            </div>
+            <!--.img-carousel-->
+        </div>
+        <!--.owl-carousel-->
+    </div>
+    <div class="content-home-box">
+        <div class="home-content animated zoomIn">
+            <h2><span class="title-purple">Welcome</span> To <span class="title-purple">TASHA</span> Store </h2>
+        </div>
+    </div>
+    </div>
+
+</section>
+<!--END OF HOME SECTION-->
+<div class="small-container">
+    <h2 class="title">Featured Products</h2>
+    <div class="row">
+        <% for(var i = 0; i < data.featureProduct.length; i++) {
+            const arrayImg = data.featureProduct[i].thumbnails.split(',')
+
+        %>
+        <div class="col-4">
+            <img src="<%= arrayImg[0]%>" class="img-sale">
+            <h4 style="overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;"><%= data.featureProduct[i].title%></h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+            </div>
+            <p>$<%=data.featureProduct[i].price%></p>
+            <div class="button" style="padding-bottom: 20px">
+                <a class="btn btn-purple" href="/products/details/<%=data.featureProduct[i]._id%>">Buy Now</a>
+            </div>
+        </div>
+        <%}%>
+    </div>
+</div>
+<!--END OF HOME SECTION-->
+<!--START OF FOOTER SECTION-->
+<div class="small-container">
+    <h2 class="title">Selling Products</h2>
+    <div class="row">
+        <% for(var i = 0; i < data.sellingProduct.length; i++) {
+            const arrayImg = data.sellingProduct[i].thumbnails.split(',')
+
+        %>
+        <div class="col-4">
+            <img src="<%=arrayImg[0]%>" class="img-sale">
+            <h4 style="overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;"><%=data.sellingProduct[i].title%></h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+            </div>
+            <p>$<%=data.sellingProduct[i].price%></p>
+            <div class="button" style="padding-bottom: 20px">
+                <a class="btn btn-purple" href="/products/details/<%=data.sellingProduct[i]._id%>">Buy Now</a>
+            </div>
+        </div>
+        <%}%>
+    </div>
+</div>
+<!--END OF FOOTER SECTION-->
+<!--<div class="small-container">-->
+<!--    <h2 class="title">Good Price Products</h2>-->
+<!--    <div class="row">-->
+<!--        <div class="col-4">-->
+<!--            <img src="Images/good_price_product_01.jpg" class="img-sale">-->
+<!--            <h4>GE Smart Countertop Microwave Oven</h4>-->
+<!--            <div class="rating">-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star-o"></i>-->
+<!--            </div>-->
+<!--            <p>$119.00</p>-->
+<!--            <p>If you've ever wished you could simply talk to your microwave, now's your chance.</p>-->
+<!--            <div class="button">-->
+<!--                <button class="btn btn-purple">Buy Now</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col-4">-->
+<!--            <img src="Images/good_price_product_02.jpg" class="img-sale">-->
+<!--            <h4>Connected Kitchen <br>Scale</h4>-->
+<!--            <div class="rating">-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star-half-o"></i>-->
+<!--                <i class="fa fa-star-o"></i>-->
+<!--            </div>-->
+<!--            <p>$79.97</p>-->
+<!--            <p>The Drop scale is more than just a smart scale; it connects to hundreds of recipes through a smartphone app</p>-->
+<!--            <div class="button">-->
+<!--                <button class="btn btn-purple">Buy Now</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col-4">-->
+<!--            <img src="Images/good_price_product_03.jpg" class="img-sale">-->
+<!--            <h4>Superheated Steam Countertop Oven</h4>-->
+<!--            <div class="rating">-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star-half-o"></i>-->
+<!--            </div>-->
+<!--            <p>$398.00</p>-->
+<!--            <p>It may not have voice control or an internet connection, but this countertop oven is still pretty genius</p>-->
+<!--            <div class="button">-->
+<!--                <button class="btn btn-purple">Buy Now</button>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--        <div class="col-4">-->
+<!--            <img src="Images/good_price_product_04.jpg" class="img-sale">-->
+<!--            <h4>Smart Kitchen <br>Thermometer</h4>-->
+<!--            <div class="rating">-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star-o"></i>-->
+<!--            </div>-->
+<!--            <p>$69.99</p>-->
+<!--            <p>This kitchen thermometer can track two temperatures at once on your smartphone via an app</p>-->
+<!--            <div class="button">-->
+<!--                <button class="btn btn-purple">Buy Now</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="small-container">-->
+<!--    <h2 class="title">Sale Products</h2>-->
+<!--    <div class="row">-->
+<!--        <div class="col-4">-->
+<!--            <img src="Images/sale_product_02.jpg" alt="" class="img-sale">-->
+<!--            <h4>WiFi Sous Vide Precision Cooker</h4>-->
+<!--            <div class="rating">-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star-o"></i>-->
+<!--            </div>-->
+<!--            <div class="span-sale">-->
+<!--                <span>119.99$</span>-->
+<!--                <span class="old-p">199.00$</span>-->
+<!--                <span class="dis-p">-40%</span>-->
+<!--            </div>-->
+<!--            <p>Up your sous vide cooking game with this precision cooker from Anova which is designed to anything to perfection</p>-->
+<!--            <div class="button">-->
+<!--                <button class="btn btn-purple">Buy Now</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col-4">-->
+<!--            <img src="Images/sale_product_03.jpg" alt="" class="img-sale">-->
+<!--            <h4>Efinigy Power <br>Blender</h4>-->
+<!--            <div class="rating">-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star-half-o"></i>-->
+<!--                <i class="fa fa-star-o"></i>-->
+<!--            </div>-->
+<!--            <div class="span-sale">-->
+<!--                <span>79.97$</span>-->
+<!--                <span class="old-p">299.95$</span>-->
+<!--                <span class="dis-p">-75%</span>-->
+<!--            </div>-->
+<!--            <p>This blender has tons of settings to get your smoothie else ,it comes with an app that provides you with recipes</p>-->
+<!--            <div class="button">-->
+<!--                <button class="btn btn-purple">Buy Now</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col-4">-->
+<!--            <img src="Images/sale_product_01.jpg" alt="" class="img-sale">-->
+<!--            <h4>Cue Smart Induction Burner & Fry Pan</h4>-->
+<!--            <div class="rating">-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star-half-o"></i>-->
+<!--            </div>-->
+<!--            <div class="span-sale">-->
+<!--                <span>249.97$</span>-->
+<!--                <span class="old-p">499.95$</span>-->
+<!--                <span class="dis-p">-50%</span>-->
+<!--            </div>-->
+<!--            <p>Embedded sensors in both the cooktop and the pan allow them to connect to the Cue's app</p>-->
+<!--            <div class="button">-->
+<!--                <button class="btn btn-purple">Buy Now</button>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--        <div class="col-4">-->
+<!--            <img src="Images/sale_product_04.jpg" alt="" class="img-sale">-->
+<!--            <h4>Connected Double Oven Electric Convection Range</h4>-->
+<!--            <div class="rating">-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star"></i>-->
+<!--                <i class="fa fa-star-o"></i>-->
+<!--            </div>-->
+<!--            <div class="span-sale">-->
+<!--                <span>700.99$</span>-->
+<!--                <span class="old-p">2,619.99$</span>-->
+<!--                <span class="dis-p">-80%</span>-->
+<!--            </div>-->
+<!--            <p>Did you know you can talk to your oven, now too? This from GE is just one example—it connects to wifi</p>-->
+<!--            <div class="button">-->
+<!--                <button class="btn btn-purple">Buy Now</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--START OF FOOTER SECTION-->
+<%-include('partial/footer')%>
+<!--END OF FOOTER SECTION-->
+<!--.jquery js-->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.validate.min.js"></script>
+
+<!--.bootstrap-->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<!--owl carousel-->
+<script src="/owl-carousel/owl.carousel.min.js"></script>
+<script src="/js/validate.js"></script>
+
+<!--Our JS-->
+<script src="/js/home.js"></script>
+</body>
+</html>

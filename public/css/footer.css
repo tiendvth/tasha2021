@@ -1,0 +1,125 @@
+/***************************FOOTER**************************************/
+.footer{
+    height: 300px;
+    background: #222;
+}
+.contact-left h2{
+    padding-top: 50px;
+    color: white;
+    font-size: 35px;
+}
+.contact-left h3{
+    margin-top: 0;
+    padding-top: 0;
+    color:white;
+    font-size: 20px;
+}
+.fi{
+    color: #6F5CF3;
+    margin: 8px;
+}
+.para{ padding-top: 8px;
+    margin-top: 0;
+    color: gray;
+    font-size: 12px;
+}
+.container2{
+    padding-left: 100px;
+}
+.list{
+color:white;
+    padding: 5px;
+}
+.list:hover{
+    color:#6F5CF3;
+}
+.cr1{
+    padding-top: 50px;
+}
+.cr1 h3{
+    color:white;
+}
+.cr1 a{
+    color:gray;
+    text-decoration: none;
+    font-size: 12px;
+    display: block;
+}
+.cr2{
+    padding-top: 50px;
+
+}
+.cr2 h3{
+    color:white;
+
+}
+.cr2 a{
+    font-size: 12px;
+    color:gray;
+    text-decoration: none;
+    display:block;
+}
+.blog{
+    padding-top: 50px;
+
+}
+.blog h3{
+    color:white;
+    font-size: 20px;
+
+}
+.blog .media p{
+    font-size: 12px;
+    color: gray;
+}
+
+.media p{
+    padding: 15px;
+    width: 180px;
+    height: 90px;
+}
+.ending{
+    background: black;
+    color: white;
+    padding: 15px;
+    padding-bottom: 0;
+    padding: 12px;
+    font-size: 12px;
+}
+.copyright{
+    text-align: center;
+    padding: 10px;
+    margin-right: 20px;
+    padding-top: 0;
+    display: block;
+}
+.ending a{
+    float: right;
+    padding: 0 15px;
+}
+.brand{
+    line-height: 1;
+    margin-left: 20px;
+}
+.brand:hover,
+.brand:focus{
+    text-decoration: none;
+}
+footer .brand *{
+    color: #fff;
+}
+.brand .fa{
+    color: #6F5CF3;
+}
+.title-kitchen{
+    font-size: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    display: block;
+}
+.title-design{
+    font-family: 'Coria';
+    font-size: 20px;
+    color: #777;
+    text-transform: uppercase;
+}
